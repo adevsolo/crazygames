@@ -1,11 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Run The Solo Launcher</title>
     <style>
-        body {
-            background-color: black;
+        /* Hide the iframe initially */
+        iframe {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            z-index: 1000;
         }
     </style>
+</head>
+<body>
+    <!-- Text to click -->
+    <a href="#" id="fullscreen-link">Fullscreen</a>
+
+    <!-- The embedded iframe -->
+    <iframe id="fullscreen-embed" src="https://crazygames.com"></iframe>
+
+    <script>
+        // Add click event listener to the link
+        const link = document.getElementById('fullscreen-link');
+        const iframe = document.getElementById('fullscreen-embed');
+
+        link.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default link behavior
+            iframe.style.display = 'block'; // Show the iframe
+        });
+
+        // Optional: Add a way to exit fullscreen (e.g., pressing Esc or clicking outside)
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                iframe.style.display = 'none'; // Hide the iframe
+            }
+        });
+    </script>
 </body>
 </html>
-<a href="https://mythic.lat/launcher">Launch Solo Launcher</a>
